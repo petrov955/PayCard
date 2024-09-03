@@ -3,7 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33424.131
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayCard.Business", "PayCard.Business\PayCard.Business.csproj", "{9B3863B9-D2D6-4B34-8072-1516BAC7561F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayCard.Domain", "PayCard.Business\PayCard.Domain.csproj", "{FC82F241-F8E2-4322-BEC6-778974742369}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{9DB0F8FC-096F-4B97-88E9-F669956ADF8A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{91544B92-4B1B-40BD-BA10-6E3AFE61361A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayCard.Application", "PayCard.Application\PayCard.Application.csproj", "{FD264F78-ACA5-4494-8661-322637DD1E1D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayCard.Infrastructure", "PayCard.Infrastructure\PayCard.Infrastructure.csproj", "{1D6152DA-2CB5-4804-ACA7-0D3D265FF17B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayCard.Api", "PayCard.Api\PayCard.Api.csproj", "{D22EAA0B-2631-4482-A2D0-11988A2341E2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,13 +21,31 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{9B3863B9-D2D6-4B34-8072-1516BAC7561F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9B3863B9-D2D6-4B34-8072-1516BAC7561F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9B3863B9-D2D6-4B34-8072-1516BAC7561F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9B3863B9-D2D6-4B34-8072-1516BAC7561F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC82F241-F8E2-4322-BEC6-778974742369}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC82F241-F8E2-4322-BEC6-778974742369}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC82F241-F8E2-4322-BEC6-778974742369}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC82F241-F8E2-4322-BEC6-778974742369}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD264F78-ACA5-4494-8661-322637DD1E1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD264F78-ACA5-4494-8661-322637DD1E1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD264F78-ACA5-4494-8661-322637DD1E1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD264F78-ACA5-4494-8661-322637DD1E1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D6152DA-2CB5-4804-ACA7-0D3D265FF17B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D6152DA-2CB5-4804-ACA7-0D3D265FF17B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D6152DA-2CB5-4804-ACA7-0D3D265FF17B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D6152DA-2CB5-4804-ACA7-0D3D265FF17B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D22EAA0B-2631-4482-A2D0-11988A2341E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D22EAA0B-2631-4482-A2D0-11988A2341E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D22EAA0B-2631-4482-A2D0-11988A2341E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D22EAA0B-2631-4482-A2D0-11988A2341E2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FC82F241-F8E2-4322-BEC6-778974742369} = {9DB0F8FC-096F-4B97-88E9-F669956ADF8A}
+		{FD264F78-ACA5-4494-8661-322637DD1E1D} = {9DB0F8FC-096F-4B97-88E9-F669956ADF8A}
+		{1D6152DA-2CB5-4804-ACA7-0D3D265FF17B} = {9DB0F8FC-096F-4B97-88E9-F669956ADF8A}
+		{D22EAA0B-2631-4482-A2D0-11988A2341E2} = {9DB0F8FC-096F-4B97-88E9-F669956ADF8A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B20B77B4-37EF-4CC7-A192-9753D9B3D93B}

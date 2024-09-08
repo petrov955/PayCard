@@ -16,11 +16,6 @@ namespace PayCard.Domain.Entities
 
         public string Phone { get; set; }
 
-        // In the DB foreign key to table Account Types
         public AccountTypes AccountType { get; set; }
-
-        public DateTime CreateDate { get; set; }
-
-        public DateTime UpdatedDate { get; set; }
     }
 }

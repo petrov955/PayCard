@@ -1,6 +1,6 @@
 ﻿using PayCard.Domain.Enums;
 
-namespace PayCard.Domain.Entities
+namespace PayCard.Domain.Models
 {
     public class User
     {

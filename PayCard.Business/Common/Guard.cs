@@ -95,7 +95,7 @@ namespace PayCard.Domain.Common
         }
 
         /// <summary>
-        /// Validates that the given decimal is within the specified range (inclusive).
+        /// Validates that the given decimal is within the specified range.
         /// Throws a specified domain exception if the decimal is outside the defined bounds.
         /// </summary>
         /// <typeparam name="TException">
@@ -107,15 +107,13 @@ namespace PayCard.Domain.Common
         /// <param name="max">The maximum allowable value (inclusive).</param>
         /// <param name="name">
         /// An optional parameter that specifies the name of the value being validated.
-        /// This will be included in the exception message if validation fails. Defaults to "Value".
         /// </param>
         /// <exception cref="TException">
         /// Thrown when the <paramref name="number"/> is outside the specified range, 
         /// with a message indicating that the <paramref name="name"/> must be between <paramref name="min"/> and <paramref name="max"/>.
         /// </exception>
-
         public static void AgainstOutOfRange<TException>(decimal number, decimal min, decimal max, string name = DefaultParameterName)
-            where TException : BaseDomainException, new()
+         where TException : BaseDomainException, new()
         {
             if (min <= number && number <= max)
             {

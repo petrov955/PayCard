@@ -5,12 +5,8 @@ namespace PayCard.Domain.Common
 {
     public abstract class Enumeration : IComparable
     {
-        private static readonly ConcurrentDictionary<Type, IEnumerable<object>> EnumCache
+        private static readonly ConcurrentDictionary<Type, IEnumerable<object>> _enumCache
             = new ConcurrentDictionary<Type, IEnumerable<object>>();
-
-        public int Value { get; }
-
-        public string Name { get; }
 
         protected Enumeration(int value, string name)
         {
@@ -18,7 +14,9 @@ namespace PayCard.Domain.Common
             this.Name = name;
         }
 
-        public override string ToString() => this.Name;
+        public int Value { get; }
+
+        public string Name { get; }
 
         /// <summary>
         /// Retrieves all public static fields of the specified type <typeparamref name="T"/> that derive from the <see cref="Enumeration"/> class.
@@ -32,28 +30,72 @@ namespace PayCard.Domain.Common
         /// </returns>
         /// <remarks>
         /// This method uses reflection to gather all the public static fields that are defined directly on the type <typeparamref name="T"/>.
-        /// The values are cached using <see cref="EnumCache"/> to avoid unnecessary reflection in future calls.
+        /// The values are cached using <see cref="_enumCache"/> to avoid unnecessary reflection in future calls.
         /// </remarks>
         public static IEnumerable<T> GetAll<T>() where T : Enumeration
         {
             var type = typeof(T);
 
-            var values = EnumCache.GetOrAdd(type, _ => type
+            var values = _enumCache.GetOrAdd(type, _ => type
                 .GetFields(BindingFlags.Public | BindingFlags.Static | BindingFlags.DeclaredOnly)
                 .Select(f => f.GetValue(null)!));
 
             return values.Cast<T>();
         }
 
+        /// <summary>
+        /// Retrieves an enumeration instance of type <typeparamref name="T"/> that matches the specified integer value.
+        /// </summary>
+        /// <typeparam name="T">The type of the enumeration, which must inherit from <see cref="Enumeration"/>.</typeparam>
+        /// <param name="value">The integer value associated with the enumeration item to retrieve.</param>
+        /// <returns>An instance of <typeparamref name="T"/> that corresponds to the specified integer value.</returns>
         public static T FromValue<T>(int value) where T : Enumeration
-            => Parse<T, int>(value, "value", item => item.Value == value);
+        {
+            return Parse<T, int>(value, "value", item => item.Value == value);
+        }
 
+        private static T Parse<T, TValue>(TValue value, string description, Func<T, bool> predicate) where T : Enumeration
+        {
+            var matchingItem = GetAll<T>().FirstOrDefault(predicate);
+
+            if (matchingItem == null)
+            {
+                throw new InvalidOperationException($"'{value}' is not a valid {description} in {typeof(T)}");
+            }
+
+            return matchingItem;
+        }
+
+        /// <summary>
+        /// Retrieves an enumeration instance of type <typeparamref name="T"/> that matches the specified name.
+        /// </summary>
+        /// <typeparam name="T">The type of the enumeration, which must inherit from <see cref="Enumeration"/>.</typeparam>
+        /// <param name="name">The name associated with the enumeration item to retrieve.</param>
+        /// <returns>An instance of <typeparamref name="T"/> that corresponds to the specified name.</returns>
         public static T FromName<T>(string name) where T : Enumeration
-            => Parse<T, string>(name, "name", item => item.Name == name);
+        {
+            return Parse<T, string>(name, "name", item => item.Name == name);
+        }
 
+        /// <summary>
+        /// Retrieves the name of an enumeration instance of type <typeparamref name="T"/> that matches the specified integer value.
+        /// </summary>
+        /// <typeparam name="T">The type of the enumeration, which must inherit from <see cref="Enumeration"/>.</typeparam>
+        /// <param name="value">The integer value associated with the enumeration item whose name is to be retrieved.</param>
+        /// <returns>The name of the enumeration item that corresponds to the specified integer value.</returns>
         public static string NameFromValue<T>(int value) where T : Enumeration
-            => FromValue<T>(value).Name;
+        {
+            return FromValue<T>(value).Name;
+        }
 
+        /// <summary>
+        /// Determines whether an enumeration of type <typeparamref name="T"/> contains an item with the specified integer value.
+        /// </summary>
+        /// <typeparam name="T">The type of the enumeration, which must inherit from <see cref="Enumeration"/>.</typeparam>
+        /// <param name="value">The integer value to check for in the enumeration.</param>
+        /// <returns>
+        /// <c>true</c> if an enumeration item with the specified value exists; otherwise, <c>false</c>.
+        /// </returns>
         public static bool HasValue<T>(int value) where T : Enumeration
         {
             try
@@ -67,16 +109,9 @@ namespace PayCard.Domain.Common
             }
         }
 
-        private static T Parse<T, TValue>(TValue value, string description, Func<T, bool> predicate) where T : Enumeration
+        public override string ToString()
         {
-            var matchingItem = GetAll<T>().FirstOrDefault(predicate);
-
-            if (matchingItem == null)
-            {
-                throw new InvalidOperationException($"'{value}' is not a valid {description} in {typeof(T)}");
-            }
-
-            return matchingItem;
+            return this.Name;
         }
 
         public override bool Equals(object? obj)
@@ -92,8 +127,14 @@ namespace PayCard.Domain.Common
             return typeMatches && valueMatches;
         }
 
-        public override int GetHashCode() => (this.GetType().ToString() + this.Value).GetHashCode();
+        public override int GetHashCode()
+        {
+            return (this.GetType().ToString() + this.Value).GetHashCode();
+        }
 
-        public int CompareTo(object? other) => this.Value.CompareTo(((Enumeration)other!).Value);
+        public int CompareTo(object? other)
+        {
+            return this.Value.CompareTo(((Enumeration)other!).Value);
+        }
     }
 }

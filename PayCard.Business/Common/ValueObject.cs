@@ -74,8 +74,14 @@ namespace PayCard.Domain.Common
             return fields;
         }
 
-        public static bool operator ==(ValueObject first, ValueObject second) => first.Equals(second);
+        public static bool operator ==(ValueObject first, ValueObject second)
+        {
+            return first.Equals(second);
+        }
 
-        public static bool operator !=(ValueObject first, ValueObject second) => !(first == second);
+        public static bool operator !=(ValueObject first, ValueObject second)
+        {
+            return !(first == second);
+        }
     }
 }

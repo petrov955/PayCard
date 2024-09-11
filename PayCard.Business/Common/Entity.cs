@@ -1,7 +1,6 @@
 ﻿namespace PayCard.Domain.Common
 {
-    public abstract class Entity<TId>
-        where TId : struct
+    public abstract class Entity<TId> where TId : struct
     {
         public TId Id { get; private set; } = default;
 
@@ -45,8 +44,14 @@
             return first.Equals(second);
         }
 
-        public static bool operator !=(Entity<TId>? first, Entity<TId>? second) => !(first == second);
+        public static bool operator !=(Entity<TId>? first, Entity<TId>? second)
+        {
+            return !(first == second);
+        }
 
-        public override int GetHashCode() => (this.GetType().ToString() + this.Id).GetHashCode();
+        public override int GetHashCode()
+        {
+            return (this.GetType().ToString() + this.Id).GetHashCode();
+        }
     }
 }

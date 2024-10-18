@@ -16,17 +16,17 @@
                 return true;
             }
 
-            if (this.GetType() != other.GetType())
+            if (GetType() != other.GetType())
             {
                 return false;
             }
 
-            if (this.Id.Equals(default) || other.Id.Equals(default))
+            if (Id.Equals(default) || other.Id.Equals(default))
             {
                 return false;
             }
 
-            return this.Id.Equals(other.Id);
+            return Id.Equals(other.Id);
         }
 
         public static bool operator ==(Entity<TId>? first, Entity<TId>? second)
@@ -51,7 +51,7 @@
 
         public override int GetHashCode()
         {
-            return (this.GetType().ToString() + this.Id).GetHashCode();
+            return (GetType().ToString() + Id).GetHashCode();
         }
     }
 }

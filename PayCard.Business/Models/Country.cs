@@ -7,31 +7,32 @@ namespace PayCard.Domain.Models
 {
     public class Country
     {
-        public Country(string name, string iso3166Code, Currency currency)
+        internal Country(string name, string iso3166Code, Currency currency)
         {
-            Guard.AgainstEmptyString<InvalidMemberException>(name, nameof(this.Name));
-            Guard.ForStringLength<InvalidMemberException>(iso3166Code, MinIsoCodeLength, MaxIsoCodeLength, nameof(this.ISO3166Code));
+            Guard.AgainstEmptyString<InvalidMemberException>(name, nameof(Name));
+            Guard.ForStringLength<InvalidMemberException>(iso3166Code, MinIsoCodeLength, MaxIsoCodeLength, nameof(ISO3166Code));
 
-            this.Name = name;
-            this.ISO3166Code = iso3166Code;
-            this.Currency = currency;
+            Name = name;
+            ISO3166Code = iso3166Code;
+            Currency = currency;
         }
 
         public string Name { get; private set; }
 
         public string ISO3166Code { get; private set; }
 
-        public Currency Currency { get; private set; }
+        public Currency Currency { get; init; }
 
         public void UpdateName(string name)
         {
-            Guard.AgainstEmptyString<InvalidMemberException>(name, nameof(this.Name));
-            this.Name = name;
+            Guard.AgainstEmptyString<InvalidMemberException>(name, nameof(Name));
+            Name = name;
         }
 
         public void UpdateIsoCode(string iso3166Code)
         {
-            Guard.ForStringLength<InvalidMemberException>(iso3166Code, MinIsoCodeLength, MaxIsoCodeLength, nameof(this.ISO3166Code));
+            Guard.ForStringLength<InvalidMemberException>(iso3166Code, MinIsoCodeLength, MaxIsoCodeLength, nameof(ISO3166Code));
+            ISO3166Code = iso3166Code;
         }
     }
 }

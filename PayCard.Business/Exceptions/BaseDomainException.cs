@@ -6,8 +6,8 @@
 
         public string Error
         {
-            get => this.error ?? base.Message;
-            set => this.error = value;
+            get => error ?? base.Message;
+            set => error = value;
         }
     }
 }

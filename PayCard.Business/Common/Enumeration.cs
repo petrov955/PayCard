@@ -10,8 +10,8 @@ namespace PayCard.Domain.Common
 
         protected Enumeration(int value, string name)
         {
-            this.Value = value;
-            this.Name = name;
+            Value = value;
+            Name = name;
         }
 
         public int Value { get; }
@@ -111,7 +111,7 @@ namespace PayCard.Domain.Common
 
         public override string ToString()
         {
-            return this.Name;
+            return Name;
         }
 
         public override bool Equals(object? obj)
@@ -121,20 +121,20 @@ namespace PayCard.Domain.Common
                 return false;
             }
 
-            var typeMatches = this.GetType() == obj.GetType();
-            var valueMatches = this.Value.Equals(otherValue.Value);
+            var typeMatches = GetType() == obj.GetType();
+            var valueMatches = Value.Equals(otherValue.Value);
 
             return typeMatches && valueMatches;
         }
 
         public override int GetHashCode()
         {
-            return (this.GetType().ToString() + this.Value).GetHashCode();
+            return (GetType().ToString() + Value).GetHashCode();
         }
 
         public int CompareTo(object? other)
         {
-            return this.Value.CompareTo(((Enumeration)other!).Value);
+            return Value.CompareTo(((Enumeration)other!).Value);
         }
     }
 }

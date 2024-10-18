@@ -1,4 +1,4 @@
-﻿using PayCard.Domain.Entities;
+﻿using PayCard.Domain.Models;
 
 namespace PayCard.Domain.Contracts.Persistence
 {

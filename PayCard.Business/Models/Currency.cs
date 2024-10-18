@@ -9,16 +9,10 @@ namespace PayCard.Domain.Models
     {
         internal Currency(string isoCode)
         {
-            Guard.ForStringLength<InvalidMemberException>(isoCode, MinIsoCodeLength, MaxIsoCodeLength, nameof(this.IsoCode));
-            this.IsoCode = isoCode;
+            Guard.ForStringLength<InvalidMemberException>(isoCode, MinIsoCodeLength, MaxIsoCodeLength, nameof(IsoCode));
+            IsoCode = isoCode;
         }
 
         public string IsoCode { get; private set; }
-
-        public void UpdateIsoCode(string isoCode)
-        {
-            Guard.ForStringLength<InvalidMemberException>(isoCode, MinIsoCodeLength, MaxIsoCodeLength, nameof(this.IsoCode));
-            this.IsoCode = isoCode;
-        }
     }
 }

@@ -8,7 +8,7 @@
 
         public InvalidMemberException(string error)
         {
-            this.Error = error;
+            Error = error;
         }
     }
 }

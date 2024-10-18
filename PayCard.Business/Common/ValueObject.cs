@@ -14,7 +14,7 @@ namespace PayCard.Domain.Common
                 return false;
             }
 
-            var type = this.GetType();
+            var type = GetType();
             var otherType = other.GetType();
 
             if (type != otherType)
@@ -22,7 +22,7 @@ namespace PayCard.Domain.Common
                 return false;
             }
 
-            var fields = type.GetFields(this.privateBindingFlags);
+            var fields = type.GetFields(privateBindingFlags);
 
             foreach (var field in fields)
             {
@@ -47,7 +47,7 @@ namespace PayCard.Domain.Common
 
         public override int GetHashCode()
         {
-            var fields = this.GetFields();
+            var fields = GetFields();
 
             const int startValue = 17;
             const int multiplier = 59;
@@ -60,13 +60,13 @@ namespace PayCard.Domain.Common
 
         private IEnumerable<FieldInfo> GetFields()
         {
-            var type = this.GetType();
+            var type = GetType();
 
             var fields = new List<FieldInfo>();
 
             while (type != typeof(object) && type != null)
             {
-                fields.AddRange(type.GetFields(this.privateBindingFlags));
+                fields.AddRange(type.GetFields(privateBindingFlags));
 
                 type = type.BaseType!;
             }

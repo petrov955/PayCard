@@ -1,4 +1,4 @@
-﻿namespace PayCard.Domain.Exceptions
+﻿namespace PayCard.Domain.Common
 {
     public abstract class BaseDomainException : Exception
     {

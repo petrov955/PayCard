@@ -3,9 +3,9 @@ using PayCard.Domain.Exceptions;
 
 using static PayCard.Domain.Common.Constants.Country;
 
-namespace PayCard.Domain.Models
+namespace PayCard.Domain.Finance.Models
 {
-    public class Country
+    public class Country : Entity<long>
     {
         internal Country(string name, string iso3166Code, Currency currency)
         {

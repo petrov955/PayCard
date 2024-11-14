@@ -4,11 +4,16 @@ using System.Text.RegularExpressions;
 
 using static PayCard.Domain.Common.Constants.Account;
 
-namespace PayCard.Domain.Models
+namespace PayCard.Domain.Finance.Models
 {
-    public class Account : Entity<long>
+    public class Account : Entity<long> , IAggregateRoot
     {
-        private readonly HashSet<Transaction> _transactionHistory;
+        readonly HashSet<Transaction> _transactionHistory;
+        
+        private Account()
+        {
+            _transactionHistory = new HashSet<Transaction>();
+        }
 
         internal Account(
             string IBAN,
@@ -29,13 +34,6 @@ namespace PayCard.Domain.Models
             Currency = currency;
             BankName = bankName;
         }
-
-        private Account()
-        {
-            _transactionHistory = new HashSet<Transaction>();
-        }
-
-        public long Id { get; private set; }
 
         public string AccountDescription { get; private set; }
 

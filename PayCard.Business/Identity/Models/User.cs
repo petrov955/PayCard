@@ -1,12 +1,12 @@
 ﻿using System.Text;
 
 using PayCard.Domain.Common;
-using PayCard.Domain.Enums;
+using PayCard.Domain.Finance.Enums;
 using PayCard.Domain.Exceptions;
 
 using static PayCard.Domain.Common.Constants.User;
 
-namespace PayCard.Domain.Models
+namespace PayCard.Domain.Identity.Models
 {
     public class User : Entity<long>
     {

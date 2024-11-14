@@ -1,4 +1,5 @@
-﻿using PayCard.Domain.Exceptions;
+﻿
+using static PayCard.Domain.Common.Constants.Numeric;
 
 namespace PayCard.Domain.Common
 {
@@ -113,7 +114,7 @@ namespace PayCard.Domain.Common
         /// with a message indicating that the <paramref name="name"/> must be between <paramref name="min"/> and <paramref name="max"/>.
         /// </exception>
         public static void AgainstOutOfRange<TException>(decimal number, decimal min, decimal max, string name = DefaultParameterName)
-         where TException : BaseDomainException, new()
+            where TException : BaseDomainException, new()
         {
             if (min <= number && number <= max)
             {
@@ -121,6 +122,48 @@ namespace PayCard.Domain.Common
             }
 
             ThrowException<TException>($"{name} must be between {min} and {max}.");
+        }
+
+        /// <summary>
+        /// Throws a specified exception if the given <paramref name="number"/> is less than or equal to zero.
+        /// </summary>
+        /// <typeparam name="TException">The type of the exception to throw. It must be a subclass of <see cref="BaseDomainException"/>.</typeparam>
+        /// <param name="number">The decimal number to check against. If the number is less than or equal to zero, an exception will be thrown.</param>
+        /// <exception cref="TException">Thrown when the <paramref name="number"/> is less than or equal to zero.</exception>
+        /// <remarks>
+        /// This method checks if the provided <paramref name="number"/> is negative or zero. If so, it throws the specified exception 
+        /// with a message indicating that the number should be greater than zero.
+        /// </remarks>
+        public static void AgainstNegativeNumber<TException>(decimal number)
+            where TException : BaseDomainException, new()
+        {
+            if (number > Zero)
+            {
+                return;
+            }
+
+            ThrowException<TException>($"Please note, your input ({number}) should be greater than {Zero}.");
+        }
+
+        /// <summary>
+        /// Throws a specified exception if the given <paramref name="number"/> is less than or equal to zero.
+        /// </summary>
+        /// <typeparam name="TException">The type of the exception to throw. It must be a subclass of <see cref="BaseDomainException"/>.</typeparam>
+        /// <param name="number">The int number to check against. If the number is less than or equal to zero, an exception will be thrown.</param>
+        /// <exception cref="TException">Thrown when the <paramref name="number"/> is less than or equal to zero.</exception>
+        /// <remarks>
+        /// This method checks if the provided <paramref name="number"/> is negative or zero. If so, it throws the specified exception 
+        /// with a message indicating that the number should be greater than zero.
+        /// </remarks>
+        public static void AgainstNegativeNumber<TException>(long number)
+            where TException : BaseDomainException, new()
+        {
+            if (number > Zero)
+            {
+                return;
+            }
+
+            ThrowException<TException>($"Please note, your input ({number}) should be greater than {Zero}.");
         }
 
         /// <summary>

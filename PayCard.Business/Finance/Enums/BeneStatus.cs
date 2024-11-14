@@ -2,7 +2,7 @@
 
 using static PayCard.Domain.Common.Constants.Numeric;
 
-namespace PayCard.Domain.Enums
+namespace PayCard.Domain.Finance.Enums
 {
     public class BeneficiaryStatus : Enumeration
     {

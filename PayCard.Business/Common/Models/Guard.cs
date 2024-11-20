@@ -1,7 +1,6 @@
-﻿
-using static PayCard.Domain.Common.Constants.Numeric;
+﻿using static PayCard.Domain.Common.Constants.Numeric;
 
-namespace PayCard.Domain.Common
+namespace PayCard.Domain.Common.Models
 {
     public static class Guard
     {

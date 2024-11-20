@@ -1,7 +1,7 @@
 ﻿using System.Collections.Concurrent;
 using System.Reflection;
 
-namespace PayCard.Domain.Common
+namespace PayCard.Domain.Common.Models
 {
     public abstract class Enumeration : IComparable
     {

@@ -1,4 +1,4 @@
-﻿using PayCard.Domain.Common;
+﻿using PayCard.Domain.Common.Contracts;
 using PayCard.Domain.Finance.Models.Account;
 
 namespace PayCard.Domain.Finance.Factories

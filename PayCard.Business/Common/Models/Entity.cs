@@ -1,4 +1,4 @@
-﻿namespace PayCard.Domain.Common
+﻿namespace PayCard.Domain.Common.Models
 {
     public abstract class Entity<TId> where TId : struct
     {

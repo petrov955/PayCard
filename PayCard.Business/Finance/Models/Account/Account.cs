@@ -1,6 +1,8 @@
 ﻿using System.Text.RegularExpressions;
 
 using PayCard.Domain.Common;
+using PayCard.Domain.Common.Contracts;
+using PayCard.Domain.Common.Models;
 using PayCard.Domain.Finance.Exceptions;
 
 using static PayCard.Domain.Common.Constants.Account;

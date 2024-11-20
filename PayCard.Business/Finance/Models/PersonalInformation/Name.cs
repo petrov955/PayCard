@@ -1,16 +1,16 @@
 ﻿using PayCard.Domain.Common;
-using PayCard.Domain.Exceptions;
+using PayCard.Domain.Finance.Exceptions;
 
 using static PayCard.Domain.Common.Constants.PI;
 
-namespace PayCard.Domain.Finance.Models
+namespace PayCard.Domain.Finance.Models.PersonalInformation
 {
     public class Name : ValueObject
     {
         internal Name(string firstName, string lastName)
         {
-            Guard.ForStringLength<InvalidMemberException>(firstName, MinNameLength, MaxNameLength, nameof(FirstName));
-            Guard.ForStringLength<InvalidMemberException>(lastName, MinNameLength, MaxNameLength, nameof(LastName));
+            Guard.ForStringLength<InvalidNameException>(firstName, MinNameLength, MaxNameLength, nameof(FirstName));
+            Guard.ForStringLength<InvalidNameException>(lastName, MinNameLength, MaxNameLength, nameof(LastName));
 
             FirstName = firstName;
             LastName = lastName;

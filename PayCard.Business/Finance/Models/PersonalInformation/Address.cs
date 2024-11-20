@@ -1,16 +1,16 @@
 ﻿using PayCard.Domain.Common;
-using PayCard.Domain.Exceptions;
+using PayCard.Domain.Finance.Exceptions;
 using System.Text.RegularExpressions;
 
 using static PayCard.Domain.Common.Constants.Address;
 using static PayCard.Domain.Common.Constants.Numeric;
 
-namespace PayCard.Domain.Finance.ValueObjects
+namespace PayCard.Domain.Finance.Models.PersonalInformation
 {
     public class Address : ValueObject
     {
         internal Address(
-            string country,
+            Country country,
             string city,
             string addressLine1,
             string addressLine2,
@@ -27,7 +27,7 @@ namespace PayCard.Domain.Finance.ValueObjects
             PostalCode = postalCode;
         }
 
-        public string Country { get; }
+        public Country Country { get; }
         public string City { get; }
         public string AddressLine1 { get; }
         public string AddressLine2 { get; }
@@ -39,16 +39,16 @@ namespace PayCard.Domain.Finance.ValueObjects
             var regex = new Regex(Constants.RegexPattern.PostalCode);
             if (!regex.IsMatch(postalCode))
             {
-                throw new InvalidMemberException("Invalid Postal code.");
+                throw new InvalidAddressException("Invalid Postal code.");
             }
         }
 
         private void Validate(string city, string addressLine1, string addressLine2, string district, string postalCode)
         {
-            Guard.ForStringLength<InvalidMemberException>(city, MinCityLength, MaxCityLength, nameof(City));
-            Guard.ForStringLength<InvalidMemberException>(addressLine1, Zero, MaxAddressLength, nameof(AddressLine1));
-            Guard.ForStringLength<InvalidMemberException>(addressLine2, Zero, MaxAddressLength, nameof(AddressLine2));
-            Guard.ForStringLength<InvalidMemberException>(district, Zero, MaxDistrictLength, nameof(District));
+            Guard.ForStringLength<InvalidAddressException>(city, MinCityLength, MaxCityLength, nameof(City));
+            Guard.ForStringLength<InvalidAddressException>(addressLine1, Zero, MaxAddressLength, nameof(AddressLine1));
+            Guard.ForStringLength<InvalidAddressException>(addressLine2, Zero, MaxAddressLength, nameof(AddressLine2));
+            Guard.ForStringLength<InvalidAddressException>(district, Zero, MaxDistrictLength, nameof(District));
             ValidatePostalCode(postalCode);
         }
     }

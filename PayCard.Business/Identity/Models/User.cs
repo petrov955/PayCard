@@ -2,9 +2,9 @@
 
 using PayCard.Domain.Common;
 using PayCard.Domain.Finance.Enums;
-using PayCard.Domain.Exceptions;
 
 using static PayCard.Domain.Common.Constants.User;
+using PayCard.Domain.Identity.Exceptions;
 
 namespace PayCard.Domain.Identity.Models
 {
@@ -12,7 +12,7 @@ namespace PayCard.Domain.Identity.Models
     {
         internal User(long id, string username, string password, AccountType rights)
         {
-            Guard.ForStringLength<InvalidMemberException>(username, MinUsernameLength, MaxUsernameLength, nameof(Username));
+            Guard.ForStringLength<InvalidUserException>(username, MinUsernameLength, MaxUsernameLength, nameof(Username));
             ValidatePassword(password);
 
             Id = id;
@@ -42,7 +42,7 @@ namespace PayCard.Domain.Identity.Models
             var passwordBytesLength = Encoding.Unicode.GetBytes(password).Length;
             if (passwordBytesLength > MaxPasswordBytesSize || MinPasswordBytesSize > passwordBytesLength)
             {
-                throw new InvalidMemberException($"Password must be between {MinPasswordBytesSize} and {MaxPasswordBytesSize} Unicode bytes length.");
+                throw new InvalidUserException($"Password must be between {MinPasswordBytesSize} and {MaxPasswordBytesSize} Unicode bytes length.");
             }
 
             var lower = false;
@@ -72,7 +72,7 @@ namespace PayCard.Domain.Identity.Models
 
             if (!(lower && upper && number && special))
             {
-                throw new InvalidMemberException($"Please, ensure your password contains at least one (upper,lower,digit,special symbol).");
+                throw new InvalidUserException($"Please, ensure your password contains at least one (upper,lower,digit,special symbol).");
             }
         }
 

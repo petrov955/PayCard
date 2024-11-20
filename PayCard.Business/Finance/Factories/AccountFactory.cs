@@ -1,4 +1,4 @@
-﻿using PayCard.Domain.Finance.Models;
+﻿using PayCard.Domain.Finance.Models.Account;
 
 namespace PayCard.Domain.Finance.Factories
 {

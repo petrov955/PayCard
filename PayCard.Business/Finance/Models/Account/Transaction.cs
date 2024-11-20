@@ -1,21 +1,21 @@
 ﻿using PayCard.Domain.Common;
-using PayCard.Domain.Exceptions;
 using PayCard.Domain.Finance.Enums;
+using PayCard.Domain.Finance.Exceptions;
 
-namespace PayCard.Domain.Finance.Models
+namespace PayCard.Domain.Finance.Models.Account
 {
     public class Transaction : Entity<Guid>
     {
         internal Transaction(
-            TransactionType transactionType, 
-            decimal amount, 
-            DateTime date, 
-            Currency currency, 
-            long sourceAccountId, 
-            long destinationAccountId, 
-            TransactionStatus status, 
-            string? note, 
-            decimal exchangeRate, 
+            TransactionType transactionType,
+            decimal amount,
+            DateTime date,
+            Currency currency,
+            long sourceAccountId,
+            long destinationAccountId,
+            TransactionStatus status,
+            string? note,
+            decimal exchangeRate,
             decimal fee)
         {
             Validate(amount, sourceAccountId, destinationAccountId, exchangeRate, fee);
@@ -54,11 +54,11 @@ namespace PayCard.Domain.Finance.Models
 
         private static void Validate(decimal amount, long sourceAccountId, long destinationAccountId, decimal exchangeRate, decimal fee)
         {
-            Guard.AgainstNegativeNumber<InvalidMemberException>(amount);
-            Guard.AgainstNegativeNumber<InvalidMemberException>(exchangeRate);
-            Guard.AgainstNegativeNumber<InvalidMemberException>(fee);
-            Guard.AgainstNegativeNumber<InvalidMemberException>(destinationAccountId);
-            Guard.AgainstNegativeNumber<InvalidMemberException>(sourceAccountId);
+            Guard.AgainstNegativeNumber<InvalidTransactionException>(amount);
+            Guard.AgainstNegativeNumber<InvalidTransactionException>(exchangeRate);
+            Guard.AgainstNegativeNumber<InvalidTransactionException>(fee);
+            Guard.AgainstNegativeNumber<InvalidTransactionException>(destinationAccountId);
+            Guard.AgainstNegativeNumber<InvalidTransactionException>(sourceAccountId);
         }
     }
 }

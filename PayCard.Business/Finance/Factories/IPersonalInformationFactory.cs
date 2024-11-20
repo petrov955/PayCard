@@ -1,7 +1,7 @@
 ﻿using PayCard.Domain.Common;
 using PayCard.Domain.Finance.Enums;
 using PayCard.Domain.Finance.Models;
-using PayCard.Domain.Finance.ValueObjects;
+using PayCard.Domain.Finance.Models.PersonalInformation;
 
 namespace PayCard.Domain.Finance.Factories
 {

@@ -1,8 +1,8 @@
 ﻿using System.Text.RegularExpressions;
 using PayCard.Domain.Common;
-using PayCard.Domain.Exceptions;
+using PayCard.Domain.Finance.ValueObjects;
 
-namespace PayCard.Domain.Finance.Models
+namespace PayCard.Domain.Finance.Models.PersonalInformation
 {
     public class ContactInformation : ValueObject
     {
@@ -24,7 +24,7 @@ namespace PayCard.Domain.Finance.Models
             Regex regex = new Regex(Constants.RegexPattern.Email);
             if (!regex.IsMatch(email))
             {
-                throw new InvalidMemberException("Invalid email format.");
+                throw new InvalidContactInformationException("Invalid email format.");
             }
         }
 
@@ -33,7 +33,7 @@ namespace PayCard.Domain.Finance.Models
             var regex = new Regex(Constants.RegexPattern.PhoneNumber);
             if (!regex.IsMatch(phoneNumber))
             {
-                throw new InvalidMemberException("Invalid phone number format. Please ensure your number follows the example: +1 123-456-7890");
+                throw new InvalidContactInformationException("Invalid phone number format. Please ensure your number follows the example: +1 123-456-7890");
             }
         }
     }

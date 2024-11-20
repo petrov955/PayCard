@@ -1,15 +1,15 @@
 ﻿using PayCard.Domain.Common;
-using PayCard.Domain.Exceptions;
+using PayCard.Domain.Finance.Exceptions;
 
 using static PayCard.Domain.Common.Constants.Currency;
 
-namespace PayCard.Domain.Finance.Models
+namespace PayCard.Domain.Finance.Models.Account
 {
     public class Currency : Entity<long>
     {
         internal Currency(string isoCode)
         {
-            Guard.ForStringLength<InvalidMemberException>(isoCode, MinIsoCodeLength, MaxIsoCodeLength, nameof(IsoCode));
+            Guard.ForStringLength<InvalidCurrencyException>(isoCode, MinIsoCodeLength, MaxIsoCodeLength, nameof(IsoCode));
 
             IsoCode = isoCode;
         }

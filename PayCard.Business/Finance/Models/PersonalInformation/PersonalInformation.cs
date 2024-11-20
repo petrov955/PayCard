@@ -1,9 +1,8 @@
 ﻿using PayCard.Domain.Common;
 using PayCard.Domain.Finance.Enums;
-using PayCard.Domain.Exceptions;
-using PayCard.Domain.Finance.ValueObjects;
+using PayCard.Domain.Finance.Exceptions;
 
-namespace PayCard.Domain.Finance.Models
+namespace PayCard.Domain.Finance.Models.PersonalInformation
 {
     public class PersonalInformation : Entity<int>, IAggregateRoot
     {
@@ -40,9 +39,9 @@ namespace PayCard.Domain.Finance.Models
 
         public void UpdateName(Name name)
         {
-            if (Gender.Female != Gender || Name.FirstName != name.FirstName )
+            if (Gender.Female != Gender || Name.FirstName != name.FirstName)
             {
-                throw new InvalidMemberException($"Notice: Last name changes are only permitted for females. Thank you for your understanding.");
+                throw new InvalidPersonalInformationException($"Notice: Last name changes are only permitted for females. Thank you for your understanding.");
             }
 
             Name = name;
@@ -62,7 +61,7 @@ namespace PayCard.Domain.Finance.Models
         {
             if (DateTime.Now.AddYears(-AdulthoodAge) < dob)
             {
-                throw new InvalidMemberException($"Clients under the age of {AdulthoodAge} are unable to create their own financial wallet. We invite you to enjoy the app as a guest until you turn {AdulthoodAge}.");
+                throw new InvalidPersonalInformationException($"Clients under the age of {AdulthoodAge} are unable to create their own financial wallet. We invite you to enjoy the app as a guest until you turn {AdulthoodAge}.");
             }
         }
     }

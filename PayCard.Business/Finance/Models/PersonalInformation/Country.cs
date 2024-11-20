@@ -1,5 +1,5 @@
 ﻿using PayCard.Domain.Common;
-using PayCard.Domain.Exceptions;
+using PayCard.Domain.Finance.Exceptions;
 
 using static PayCard.Domain.Common.Constants.Country;
 
@@ -9,8 +9,8 @@ namespace PayCard.Domain.Finance.Models
     {
         internal Country(string name, string iso3166Code, Currency currency)
         {
-            Guard.AgainstEmptyString<InvalidMemberException>(name, nameof(Name));
-            Guard.ForStringLength<InvalidMemberException>(iso3166Code, MinIsoCodeLength, MaxIsoCodeLength, nameof(ISO3166Code));
+            Guard.AgainstEmptyString<InvalidCountryException>(name, nameof(Name));
+            Guard.ForStringLength<InvalidCountryException>(iso3166Code, MinIsoCodeLength, MaxIsoCodeLength, nameof(ISO3166Code));
 
             Name = name;
             ISO3166Code = iso3166Code;
@@ -25,13 +25,13 @@ namespace PayCard.Domain.Finance.Models
 
         public void UpdateName(string name)
         {
-            Guard.AgainstEmptyString<InvalidMemberException>(name, nameof(Name));
+            Guard.AgainstEmptyString<InvalidCountryException>(name, nameof(Name));
             Name = name;
         }
 
         public void UpdateIsoCode(string iso3166Code)
         {
-            Guard.ForStringLength<InvalidMemberException>(iso3166Code, MinIsoCodeLength, MaxIsoCodeLength, nameof(ISO3166Code));
+            Guard.ForStringLength<InvalidCountryException>(iso3166Code, MinIsoCodeLength, MaxIsoCodeLength, nameof(ISO3166Code));
             ISO3166Code = iso3166Code;
         }
     }

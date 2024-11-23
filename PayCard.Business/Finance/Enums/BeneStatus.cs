@@ -1,5 +1,4 @@
-﻿using PayCard.Domain.Common;
-
+﻿using PayCard.Domain.Common.Models;
 using static PayCard.Domain.Common.Constants.Numeric;
 
 namespace PayCard.Domain.Finance.Enums

@@ -1,5 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 using PayCard.Domain.Common;
+using PayCard.Domain.Common.Models;
 using PayCard.Domain.Finance.ValueObjects;
 
 namespace PayCard.Domain.Finance.Models.PersonalInformation

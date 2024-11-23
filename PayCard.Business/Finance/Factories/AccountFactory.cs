@@ -11,6 +11,7 @@ namespace PayCard.Domain.Finance.Factories
         decimal _balance = default!;
         Currency _currency = default!;
         string _bankName = default!;
+        TransactionLimit _transactionLimit = default!;
 
         public IAccountFactory WithAccountDescription(string accountDescription)
         {
@@ -54,6 +55,12 @@ namespace PayCard.Domain.Finance.Factories
             return this;
         }
 
+        public IAccountFactory WithTransactionLimit(TransactionLimit transactionLimit)
+        {
+            _transactionLimit = transactionLimit;
+            return this;
+        }
+
         public Account Build()
         {
             return new Account(
@@ -63,8 +70,8 @@ namespace PayCard.Domain.Finance.Factories
                 _accountDescription,
                 _balance,
                 _currency,
-                _bankName
-                );
+                _bankName,
+                _transactionLimit);
         }
 
         public Account Build(
@@ -74,10 +81,10 @@ namespace PayCard.Domain.Finance.Factories
             string accountDescription,
             decimal balance,
             Currency currency,
-            string bankName
-            )
+            string bankName,
+            TransactionLimit transactionLimit)
         {
-            return 
+            return
                 this
                 .WithIBAN(iban)
                 .WithSwiftOrBIC(swiftOrBic)
@@ -86,6 +93,7 @@ namespace PayCard.Domain.Finance.Factories
                 .WithBalance(balance)
                 .WithCurrency(currency)
                 .WithBankName(bankName)
+                .WithTransactionLimit(transactionLimit)
                 .Build();
         }
     }

@@ -1,4 +1,4 @@
-﻿namespace PayCard.Domain.Common
+﻿namespace PayCard.Domain.Common.Contracts
 {
     public interface IFactory<out TEntity>
         where TEntity : IAggregateRoot

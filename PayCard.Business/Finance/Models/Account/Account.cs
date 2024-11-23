@@ -1,6 +1,8 @@
 ﻿using System.Text.RegularExpressions;
 
 using PayCard.Domain.Common;
+using PayCard.Domain.Common.Contracts;
+using PayCard.Domain.Common.Models;
 using PayCard.Domain.Finance.Exceptions;
 
 using static PayCard.Domain.Common.Constants.Account;
@@ -23,7 +25,9 @@ namespace PayCard.Domain.Finance.Models.Account
             string accountDescription,
             decimal balance,
             Currency currency,
-            string bankName) : this()
+            string bankName,
+            TransactionLimit transactionLimit,
+            bool isActive = true) : this()
         {
             Validate(IBAN, swiftOrBIC, accountDescription, balance, bankName, beneficiary);
 
@@ -34,6 +38,8 @@ namespace PayCard.Domain.Finance.Models.Account
             Balance = balance;
             Currency = currency;
             BankName = bankName;
+            TransactionLimit = transactionLimit;
+            IsActive = isActive;
         }
 
         public string AccountDescription { get; private set; }
@@ -49,6 +55,10 @@ namespace PayCard.Domain.Finance.Models.Account
         public string BankName { get; private set; }
 
         public string Beneficiary { get; init; }
+
+        public TransactionLimit TransactionLimit { get; private set; }
+
+        public bool IsActive { get; private set; }
 
         public IReadOnlyCollection<Transaction> TransactionHistory => _transactionHistory.ToList().AsReadOnly();
 
@@ -80,6 +90,11 @@ namespace PayCard.Domain.Finance.Models.Account
         {
             ValidateSwift(swiftOrBIC);
             SwiftOrBIC = swiftOrBIC;
+        }
+
+        public void ChangeLimit(decimal limit)
+        {
+
         }
 
         private void ValidateIBAN(string IBAN)

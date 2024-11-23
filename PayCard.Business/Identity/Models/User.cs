@@ -1,10 +1,9 @@
 ﻿using System.Text;
-
-using PayCard.Domain.Common;
 using PayCard.Domain.Finance.Enums;
 
 using static PayCard.Domain.Common.Constants.User;
 using PayCard.Domain.Identity.Exceptions;
+using PayCard.Domain.Common.Models;
 
 namespace PayCard.Domain.Identity.Models
 {

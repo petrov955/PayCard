@@ -1,5 +1,6 @@
-﻿using PayCard.Domain.Common;
+﻿using PayCard.Domain.Common.Models;
 using PayCard.Domain.Finance.Exceptions;
+using PayCard.Domain.Finance.Models.Account;
 
 using static PayCard.Domain.Common.Constants.Country;
 

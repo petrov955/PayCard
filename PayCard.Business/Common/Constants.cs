@@ -4,83 +4,89 @@
     {
         internal static class Currency
         {
-            public const int MinIsoCodeLength = 3;
+            public const byte MinIsoCodeLength = 3;
 
-            public const int MaxIsoCodeLength = 3;
+            public const byte MaxIsoCodeLength = 3;
         }
 
         internal static class Country
         {
-            public const int MinIsoCodeLength = 2;
+            public const byte MinIsoCodeLength = 2;
 
-            public const int MaxIsoCodeLength = 2;
+            public const byte MaxIsoCodeLength = 2;
         }
 
         internal static class User
         {
-            public const int MaxUsernameLength = 40;
+            public const byte MaxUsernameLength = 40;
 
-            public const int MinUsernameLength = 1;
+            public const byte MinUsernameLength = 1;
 
-            public const int MinPasswordBytesSize = 8;
+            public const byte MinPasswordBytesSize = 8;
 
-            public const int MaxPasswordBytesSize = 255;
+            public const byte MaxPasswordBytesSize = 255;
         }
 
         internal static class PI
         {
-            public const int MinNameLength = 1;
+            public const byte MinNameLength = 1;
 
-            public const int MaxNameLength = 40;
+            public const byte MaxNameLength = 40;
 
-            public const int MaxEmailLength = 80;
+            public const byte MaxEmailLength = 80;
         }
 
         internal static class Account
         {
-            public const int MinDescriptionLength = 3;
+            public const byte MinDescriptionLength = 3;
 
-            public const int MaxDescriptionLength = 140;
+            public const byte MaxDescriptionLength = 140;
 
             public const decimal MinBalance = 0m;
 
             public const decimal MaxBalance = Decimal.MaxValue;
 
-            public const int MaxBeneficiaryLength = 90;
+            public const byte MaxBeneficiaryLength = 90;
 
-            public const int MinBeneficiaryLength = 2;
+            public const byte MinBeneficiaryLength = 2;
 
-            public const int MaxBankNameLength = 60;
+            public const byte MaxBankNameLength = 60;
 
-            public const int MinBankNameLength = 5;
+            public const byte MinBankNameLength = 5;
+
+            public const byte DailyTransactionsLimit = 20;
+
+            public const byte WeeklyTransactionsLimit = 140;
+            
+            public const ushort MonthlyTransactionsLimit = 600;
         }
 
         internal static class Address
         {
-            public const int MaxAddressLength = 100;
+            public const byte MaxAddressLength = 100;
 
-            public const int MinCityLength = 1;
+            public const byte MinCityLength = 1;
 
-            public const int MaxCityLength = 80;
+            public const byte MaxCityLength = 80;
 
-            public const int MaxDistrictLength = 45;
+            public const byte MaxDistrictLength = 45;
         }
 
         internal static class Numeric
         {
-            public const int Zero = 0;
+            public const byte Zero = 0;
 
-            public const int One = 1;
+            public const byte One = 1;
 
-            public const int Two = 2;
+            public const byte Two = 2;
 
-            public const int Three = 3;
+            public const byte Three = 3;
 
-            public const int Four = 4;
+            public const byte Four = 4;
 
-            public const int Five = 5;
+            public const byte Five = 5;
 
-            public const int Six = 6;
+            public const byte Six = 6;
         }
 
         internal static class RegexPattern

@@ -1,9 +1,10 @@
 ﻿using PayCard.Domain.Common.Contracts;
 using PayCard.Domain.Finance.Models.Account;
+using static PayCard.Domain.Common.Constants;
 
 namespace PayCard.Domain.Finance.Factories
 {
-    public interface IAccountFactory : IFactory<Account>
+    public interface IAccountFactory : IFactory<Models.Account.Account>
     {
         IAccountFactory WithIBAN(string iban);
 
@@ -15,8 +16,10 @@ namespace PayCard.Domain.Finance.Factories
 
         IAccountFactory WithBalance(decimal balance);
 
-        IAccountFactory WithCurrency(Currency currency);
+        IAccountFactory WithCurrency(Models.Account.Currency currency);
 
         IAccountFactory WithBankName(string bankName);
+
+        IAccountFactory WithTransactionLimit(TransactionLimit transactionLimit);
     }
 }

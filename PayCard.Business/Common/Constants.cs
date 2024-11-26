@@ -72,6 +72,13 @@
             public const byte MaxDistrictLength = 45;
         }
 
+        internal static class Transaction
+        {
+            public const decimal DefaultFee = 0m;
+            
+            public const decimal DefaultExchangeRate = 1m;
+        }
+
         internal static class Numeric
         {
             public const byte Zero = 0;

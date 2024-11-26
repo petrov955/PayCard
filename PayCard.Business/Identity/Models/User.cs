@@ -1,5 +1,5 @@
 ﻿using System.Text;
-using PayCard.Domain.Finance.Enums;
+using PayCard.Domain.Accounts.Enums;
 
 using static PayCard.Domain.Common.Constants.User;
 using PayCard.Domain.Identity.Exceptions;

@@ -1,4 +1,5 @@
 ﻿using PayCard.Domain.Common;
+using PayCard.Domain.Common.Models;
 using PayCard.Domain.Finance.Exceptions;
 
 using static PayCard.Domain.Common.Constants;

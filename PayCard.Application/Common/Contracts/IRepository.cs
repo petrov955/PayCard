@@ -1,4 +1,4 @@
-﻿using PayCard.Domain.Common;
+﻿using PayCard.Domain.Common.Contracts;
 
 namespace PayCard.Application.Common.Contracts
 {

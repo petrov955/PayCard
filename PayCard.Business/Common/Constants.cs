@@ -7,6 +7,10 @@
             public const byte MinIsoCodeLength = 3;
 
             public const byte MaxIsoCodeLength = 3;
+
+            public const byte MinNameLength = 3;
+
+            public const byte MaxNameLength = 128;
         }
 
         internal static class Country
@@ -70,6 +74,8 @@
             public const byte MaxCityLength = 80;
 
             public const byte MaxDistrictLength = 45;
+
+            public const byte MaxPostalCodeLength = 10;
         }
 
         internal static class Transaction

@@ -1,9 +1,4 @@
 ﻿using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PayCard.Application.Finance.Accounts.Queries.Accounts
 {
@@ -18,10 +13,17 @@ namespace PayCard.Application.Finance.Accounts.Queries.Accounts
         public long UserId { get; }
        
         public bool GetActive { get; }
-       
-        
-        
-        
-       
+        public class GetAccountsDetailsQueryHandler : IRequestHandler<GetAccountsDetailsQuery, IEnumerable<GetAccountDetailsOutputModel>>
+        {
+            private readonly IAccountQueryRepository _accountQueryRepository;
+
+            public GetAccountsDetailsQueryHandler(IAccountQueryRepository accountQueryRepository)
+                => _accountQueryRepository = accountQueryRepository;
+
+            public async Task<IEnumerable<GetAccountDetailsOutputModel>> Handle(
+                GetAccountsDetailsQuery request,
+                CancellationToken cancellationToken = default)
+                => await _accountQueryRepository.GetAccountsDetailsAsync(request.UserId, request.GetActive);
+        }
     }
 }

@@ -7,7 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Statistics\" />
+    <Compile Remove="HR\**" />
+    <Compile Remove="Statistics\**" />
+    <EmbeddedResource Remove="HR\**" />
+    <EmbeddedResource Remove="Statistics\**" />
+    <None Remove="HR\**" />
+    <None Remove="Statistics\**" />
   </ItemGroup>
 
   <ItemGroup>

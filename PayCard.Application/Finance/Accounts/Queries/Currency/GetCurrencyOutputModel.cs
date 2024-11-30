@@ -4,7 +4,7 @@
     {
         public long Id { get; }
         
-        public string IsoCode { get; private set; }
+        public string Iso4217Code { get; private set; }
 
         public string Name { get; private set; }
 

@@ -4,9 +4,9 @@ using PayCard.Domain.Common;
 using PayCard.Domain.Common.Resources;
 using PayCard.Domain.Common.Contracts;
 using PayCard.Domain.Common.Models;
+using PayCard.Domain.Banking.Exceptions;
 
 using static PayCard.Domain.Common.Constants.Account;
-using PayCard.Domain.Banking.Exceptions;
 
 namespace PayCard.Domain.Banking.Models.Account
 {
@@ -105,6 +105,8 @@ namespace PayCard.Domain.Banking.Models.Account
             {
                 throw new InvalidAccountException(Global.InvalidAccountSwift);
             }
+
+            Guard.ForStringLength<InvalidAccountException>(swift, MinSwiftBicLength, MaxSwiftBicLength, nameof(SwiftOrBIC));
         }
 
         private void Validate(

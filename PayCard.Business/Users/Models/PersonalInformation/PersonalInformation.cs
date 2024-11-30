@@ -40,11 +40,11 @@ namespace PayCard.Domain.Users.Models.PersonalInformation
 
         public string? AdditionalInformation { get; private set; }
 
-        public void UpdateName(Name name)
+        public void ChangeLastName(Name name)
         {
             if (Gender.Female != Gender || Name.FirstName != name.FirstName)
             {
-                throw new InvalidPersonalInformationException(String.Format(Global.PersonalNameUpdateFailed, Gender.Female.Name));
+                throw new InvalidPersonalInformationException(String.Format(Global.LastNameUpdateFailed, Gender.Female.Name));
             }
 
             Name = name;

@@ -133,20 +133,20 @@ namespace PayCard.Domain.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Last name changes are only permitted for females. Thank you for your understanding..
+        /// </summary>
+        internal static string LastNameUpdateFailed {
+            get {
+                return ResourceManager.GetString("LastNameUpdateFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Users under the age of {0} are unable to create their own financial wallet. We invite you to enjoy the app as a guest until you turn {1}..
         /// </summary>
         internal static string MinorsCannotCreateAccount {
             get {
                 return ResourceManager.GetString("MinorsCannotCreateAccount", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Last name changes are only permitted for females. Thank you for your understanding..
-        /// </summary>
-        internal static string PersonalNameUpdateFailed {
-            get {
-                return ResourceManager.GetString("PersonalNameUpdateFailed", resourceCulture);
             }
         }
         

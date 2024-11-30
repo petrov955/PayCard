@@ -141,11 +141,11 @@
   <data name="InvalidPropertyLength" xml:space="preserve">
     <value>{0} must have between {1} and {2} symbols.</value>
   </data>
+  <data name="LastNameUpdateFailed" xml:space="preserve">
+    <value>Last name changes are only permitted for females. Thank you for your understanding.</value>
+  </data>
   <data name="MinorsCannotCreateAccount" xml:space="preserve">
     <value>Users under the age of {0} are unable to create their own financial wallet. We invite you to enjoy the app as a guest until you turn {1}.</value>
-  </data>
-  <data name="PersonalNameUpdateFailed" xml:space="preserve">
-    <value>Last name changes are only permitted for females. Thank you for your understanding.</value>
   </data>
   <data name="PropertyCannotBeNull" xml:space="preserve">
     <value>{0} cannot be null or empty.</value>

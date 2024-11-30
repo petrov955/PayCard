@@ -4,6 +4,9 @@ using PayCard.Domain.Common.Models;
 using PayCard.Domain.Common.Resources;
 using PayCard.Domain.Users.Exceptions;
 
+using static PayCard.Domain.Common.Constants.ContactInformation;
+using static PayCard.Domain.Common.Constants.Numeric;
+
 namespace PayCard.Domain.Users.Models.PersonalInformation
 {
     public class ContactInformation : ValueObject
@@ -28,6 +31,8 @@ namespace PayCard.Domain.Users.Models.PersonalInformation
             {
                 throw new InvalidContactInformationException(Global.InvalidEmailFormat);
             }
+
+            Guard.ForStringLength<InvalidContactInformationException>(email, Three, MaxEmailLength, nameof(Email));
         }
 
         private void ValidatePhoneNumber(string phoneNumber)
@@ -37,6 +42,8 @@ namespace PayCard.Domain.Users.Models.PersonalInformation
             {
                 throw new InvalidContactInformationException(Global.InvalidPhoneNumberFormat);
             }
+
+            Guard.ForStringLength<InvalidContactInformationException>(phoneNumber, MinPhoneNumberLength, MaxPhoneNumberLength, nameof(PhoneNumber));
         }
     }
 }

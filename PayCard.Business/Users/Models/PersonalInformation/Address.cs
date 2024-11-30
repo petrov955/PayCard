@@ -1,11 +1,11 @@
-﻿using PayCard.Domain.Common;
+﻿using System.Text.RegularExpressions;
+using PayCard.Domain.Common;
 using PayCard.Domain.Common.Models;
 using PayCard.Domain.Common.Resources;
-using System.Text.RegularExpressions;
+using PayCard.Domain.Users.Exceptions;
 
 using static PayCard.Domain.Common.Constants.Address;
 using static PayCard.Domain.Common.Constants.Numeric;
-using PayCard.Domain.Users.Exceptions;
 
 namespace PayCard.Domain.Users.Models.PersonalInformation
 {

@@ -63,6 +63,10 @@
             public const byte WeeklyTransactionsLimit = 140;
             
             public const ushort MonthlyTransactionsLimit = 600;
+
+            public const byte MaxSwiftBicLength = 11;
+            
+            public const byte MinSwiftBicLength = 8;
         }
 
         internal static class Address
@@ -76,6 +80,15 @@
             public const byte MaxDistrictLength = 45;
 
             public const byte MaxPostalCodeLength = 10;
+        }
+
+        internal static class ContactInformation
+        {
+            public const ushort MaxEmailLength = 320;
+
+            public const byte MaxPhoneNumberLength = 16;
+            
+            public const byte MinPhoneNumberLength = 7;
         }
 
         internal static class Transaction

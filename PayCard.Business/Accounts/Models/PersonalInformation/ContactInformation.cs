@@ -1,6 +1,7 @@
 ﻿using System.Text.RegularExpressions;
 using PayCard.Domain.Common;
 using PayCard.Domain.Common.Models;
+using PayCard.Domain.Common.Resources;
 using PayCard.Domain.Accounts.ValueObjects;
 
 namespace PayCard.Domain.Accounts.Models.PersonalInformation
@@ -25,7 +26,7 @@ namespace PayCard.Domain.Accounts.Models.PersonalInformation
             Regex regex = new Regex(Constants.RegexPattern.Email);
             if (!regex.IsMatch(email))
             {
-                throw new InvalidContactInformationException("Invalid email format.");
+                throw new InvalidContactInformationException(Global.InvalidEmailFormat);
             }
         }
 
@@ -34,7 +35,7 @@ namespace PayCard.Domain.Accounts.Models.PersonalInformation
             var regex = new Regex(Constants.RegexPattern.PhoneNumber);
             if (!regex.IsMatch(phoneNumber))
             {
-                throw new InvalidContactInformationException("Invalid phone number format. Please ensure your number follows the example: +1 123-456-7890");
+                throw new InvalidContactInformationException(Global.InvalidPhoneNumberFormat);
             }
         }
     }

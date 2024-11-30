@@ -2,6 +2,7 @@
 
 using PayCard.Domain.Accounts.Exceptions;
 using PayCard.Domain.Common.Models;
+using PayCard.Domain.Common.Resources;
 using PayCard.Domain.Common;
 
 using static PayCard.Domain.Common.Constants.Account;
@@ -39,7 +40,7 @@ namespace PayCard.Domain.Payments.Models
             var regex = new Regex(Constants.RegexPattern.IBAN);
             if (!regex.IsMatch(IBAN))
             {
-                throw new InvalidAccountException("Invalid IBAN number.");
+                throw new InvalidAccountException(Global.InvalidAccountIBAN);
             }
         }
     }

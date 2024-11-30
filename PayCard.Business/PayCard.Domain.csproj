@@ -10,4 +10,19 @@
     <Folder Include="Statistics\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="Common\Resources\Global.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Global.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Update="Common\Resources\Global.resx">
+		  <Generator>ResXFileCodeGenerator</Generator>
+		  <LastGenOutput>Global.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+	</ItemGroup>
+
 </Project>

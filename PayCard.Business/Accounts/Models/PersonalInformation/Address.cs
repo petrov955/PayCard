@@ -1,5 +1,6 @@
 ﻿using PayCard.Domain.Common;
 using PayCard.Domain.Common.Models;
+using PayCard.Domain.Common.Resources;
 using PayCard.Domain.Accounts.Exceptions;
 using System.Text.RegularExpressions;
 
@@ -40,7 +41,7 @@ namespace PayCard.Domain.Accounts.Models.PersonalInformation
             var regex = new Regex(Constants.RegexPattern.PostalCode);
             if (!regex.IsMatch(postalCode))
             {
-                throw new InvalidAddressException("Invalid Postal code.");
+                throw new InvalidAddressException(Global.InvalidPostalCoce);
             }
         }
 

@@ -1,4 +1,5 @@
 ﻿using PayCard.Domain.Common.Models;
+using PayCard.Domain.Common.Resources;
 using PayCard.Domain.Accounts.Exceptions;
 
 using static PayCard.Domain.Common.Constants.Currency;
@@ -28,7 +29,7 @@ namespace PayCard.Domain.Accounts.Models.Account
         {
             if (char.IsWhiteSpace(symbol))
             {
-                throw new InvalidCurrencyException($"{nameof(Symbol)} is required.");
+                throw new InvalidCurrencyException(string.Format(Global.FieldIsRequired, nameof(Symbol)));
             }
         }
     }

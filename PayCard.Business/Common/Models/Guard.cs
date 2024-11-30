@@ -1,4 +1,6 @@
-﻿using static PayCard.Domain.Common.Constants.Numeric;
+﻿using PayCard.Domain.Common.Resources;
+
+using static PayCard.Domain.Common.Constants.Numeric;
 
 namespace PayCard.Domain.Common.Models
 {
@@ -19,7 +21,7 @@ namespace PayCard.Domain.Common.Models
                 return;
             }
 
-            ThrowException<TException>($"{name} cannot be null or empty.");
+            ThrowException<TException>(String.Format(Global.PropertyCannotBeNull, name));
         }
 
         /// <summary>
@@ -37,7 +39,7 @@ namespace PayCard.Domain.Common.Models
                 return;
             }
 
-            ThrowException<TException>($"{name} must have between {minLength} and {maxLength} symbols.");
+            ThrowException<TException>(String.Format(Global.InvalidPropertyLength, name, minLength, maxLength));
         }
 
         /// <summary>
@@ -54,7 +56,7 @@ namespace PayCard.Domain.Common.Models
                 return;
             }
 
-            ThrowException<TException>($"{name} must be between {min} and {max}.");
+            ThrowException<TException>(String.Format(Global.ValueMustBeBetween, name, min, max));
         }
 
         /// <summary>
@@ -70,7 +72,7 @@ namespace PayCard.Domain.Common.Models
                 return;
             }
 
-            ThrowException<TException>($"{name} must be between {min} and {max}.");
+            ThrowException<TException>(String.Format(Global.ValueMustBeBetween, name, min, max));
         }
 
         /// <summary>
@@ -85,7 +87,7 @@ namespace PayCard.Domain.Common.Models
                 return;
             }
 
-            ThrowException<TException>($"Please note, your input ({number}) should be greater than {Zero}.");
+            ThrowException<TException>(String.Format(Global.ValueMustBeGreaterThan, number, Zero));
         }
 
         /// <summary>
@@ -100,7 +102,7 @@ namespace PayCard.Domain.Common.Models
                 return;
             }
 
-            ThrowException<TException>($"Please note, your input ({number}) should be greater than {Zero}.");
+            ThrowException<TException>(String.Format(Global.ValueMustBeGreaterThan, number, Zero));
         }
 
         /// <summary>

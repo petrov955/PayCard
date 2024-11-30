@@ -1,5 +1,6 @@
 ﻿using PayCard.Domain.Common.Contracts;
 using PayCard.Domain.Common.Models;
+using PayCard.Domain.Common.Resources;
 using PayCard.Domain.Accounts.Enums;
 using PayCard.Domain.Accounts.Exceptions;
 
@@ -8,6 +9,7 @@ namespace PayCard.Domain.Accounts.Models.PersonalInformation
     public class PersonalInformation : Entity<int>, IAggregateRoot
     {
         private const byte AdulthoodAge = 18;
+        private const byte OldestEverLivedPersonAge = 122;
         internal PersonalInformation(
             Name name,
             Gender gender,
@@ -42,7 +44,7 @@ namespace PayCard.Domain.Accounts.Models.PersonalInformation
         {
             if (Gender.Female != Gender || Name.FirstName != name.FirstName)
             {
-                throw new InvalidPersonalInformationException($"Notice: Last name changes are only permitted for females. Thank you for your understanding.");
+                throw new InvalidPersonalInformationException(String.Format(Global.PersonalNameUpdateFailed, Gender.Female.Name));
             }
 
             Name = name;
@@ -62,7 +64,14 @@ namespace PayCard.Domain.Accounts.Models.PersonalInformation
         {
             if (DateTime.Now.AddYears(-AdulthoodAge) < dob)
             {
-                throw new InvalidPersonalInformationException($"Clients under the age of {AdulthoodAge} are unable to create their own financial wallet. We invite you to enjoy the app as a guest until you turn {AdulthoodAge}.");
+                throw new InvalidPersonalInformationException(String.Format(Global.MinorsCannotCreateAccount, AdulthoodAge, AdulthoodAge));
+            }
+
+            var isDOBExceedingHumanLifespan = DateTime.UtcNow.Year - dob.Year > OldestEverLivedPersonAge;
+            var isDOBFutureDate = DateTime.UtcNow <= dob;
+            if (isDOBFutureDate || isDOBExceedingHumanLifespan)
+            {
+                throw new InvalidPersonalInformationException(Global.InvalidDOB);
             }
         }
     }

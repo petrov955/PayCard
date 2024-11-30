@@ -1,6 +1,7 @@
 ﻿using System.Text.RegularExpressions;
 
 using PayCard.Domain.Common;
+using PayCard.Domain.Common.Resources;
 using PayCard.Domain.Common.Contracts;
 using PayCard.Domain.Common.Models;
 using PayCard.Domain.Accounts.Exceptions;
@@ -93,7 +94,7 @@ namespace PayCard.Domain.Accounts.Models.Account
             var regex = new Regex(Constants.RegexPattern.IBAN);
             if (!regex.IsMatch(IBAN))
             {
-                throw new InvalidAccountException("Invalid IBAN number.");
+                throw new InvalidAccountException(Global.InvalidAccountIBAN);
             }
         }
 
@@ -102,7 +103,7 @@ namespace PayCard.Domain.Accounts.Models.Account
             var regex = new Regex(Constants.RegexPattern.Swift);
             if (!regex.IsMatch(swift))
             {
-                throw new InvalidAccountException("Invalid Swift code.");
+                throw new InvalidAccountException(Global.InvalidAccountSwift);
             }
         }
 
